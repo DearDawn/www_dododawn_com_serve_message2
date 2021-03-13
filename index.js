@@ -3,6 +3,7 @@ var https = require('https');
 var url = require('url');
 var util = require('util');
 var mysql = require('mysql');
+var fs = require('fs');
 var connection = null
 var remoteConfig = {
     host: 'localhost',
