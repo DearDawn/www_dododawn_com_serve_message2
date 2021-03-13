@@ -1,4 +1,5 @@
 var http = require('http');
+var http = require('https');
 var url = require('url');
 var util = require('util');
 var mysql = require('mysql');
@@ -33,7 +34,7 @@ function handleDisconnection() {
 }
 handleDisconnection();
 
-http.createServer(function (req, res) {
+const app = (req, res) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.setHeader("Cache-Control", "no-cache");
     // res.setHeader("Access-Control-Allow-Origin", "https://www.dododawn.com"); // 设置可访问的源
@@ -94,7 +95,15 @@ http.createServer(function (req, res) {
         default:
             break;
     }
+}
 
-}).listen(8080);
+http.createServer(app).listen(8080);
+
+https.createServer({
+    key: fs.readFileSync("./ssl/Nginx/2_www.dododawn.com.key"),
+    cert: fs.readFileSync("./ssl/Nginx/1_www.dododawn.com_bundle.crt")
+}, app).listen(2778);
+
 // 控制台会输出以下信息
-console.log('Server running at http://127.0.0.1:8080/');
+console.log('Server running at https://127.0.0.1:8080/');
+console.log('Server running at http://127.0.0.1:8081/');
