@@ -1,5 +1,5 @@
 var http = require('http');
-var http = require('https');
+var https = require('https');
 var url = require('url');
 var util = require('util');
 var mysql = require('mysql');
