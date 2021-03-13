@@ -98,12 +98,12 @@ const app = (req, res) => {
     }
 }
 
-http.createServer(app).listen(8080);
+http.createServer(app).listen(8081);
 
 https.createServer({
     key: fs.readFileSync("./ssl/Nginx/2_www.dododawn.com.key"),
     cert: fs.readFileSync("./ssl/Nginx/1_www.dododawn.com_bundle.crt")
-}, app).listen(2778);
+}, app).listen(8080);
 
 // 控制台会输出以下信息
 console.log('Server running at https://127.0.0.1:8080/');
