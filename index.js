@@ -7,7 +7,7 @@ var fs = require('fs');
 var connection = null
 var remoteConfig = {
     host: 'localhost',
-    user: 'dodo',
+    user: 'root',
     password: 'Tang@990217',
     database: 'qiyatang',
     charset: "UTF8MB4"
@@ -101,8 +101,8 @@ const app = (req, res) => {
 http.createServer(app).listen(8081);
 
 https.createServer({
-    key: fs.readFileSync("./ssl/Nginx/2_www.dododawn.com.key"),
-    cert: fs.readFileSync("./ssl/Nginx/1_www.dododawn.com_bundle.crt")
+    key: fs.readFileSync("/www/wwwroot/ssl/Nginx/0_dododawn.com.key"),
+    cert: fs.readFileSync("/www/wwwroot/ssl/Nginx/1_dododawn.com_bundle.pem")
 }, app).listen(8080);
 
 // 控制台会输出以下信息
